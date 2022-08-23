@@ -12,7 +12,7 @@ export const FieldCheck = props => {
 		...checkProps
 	} = props;
 
-	// update group value
+	// Update group value
 	useEffect(() => {
 		setGroupValue(
 			type === 'radio'
@@ -23,7 +23,7 @@ export const FieldCheck = props => {
 		);
 	}, [groupValue, type, options, setGroupValue]);
 
-	// handle change
+	// Handle change
 	const handleChange = e => {
 		let { value: eventValue, checked } = e.target;
 
@@ -43,11 +43,7 @@ export const FieldCheck = props => {
 			);
 	};
 
-	console.log({
-		groupValue
-	});
-
-	// return
+	// Return JSX
 	return (
 		<FormCheck
 			name={name}

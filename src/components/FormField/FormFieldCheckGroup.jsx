@@ -3,11 +3,8 @@ import { useState } from 'react';
 import { FormFieldCheck } from './FormFieldCheck';
 
 export const FormFieldCheckGroup = props => {
-	const {
-		label,
-		element: { control, name, options, ...elementProps },
-		...groupProps
-	} = props;
+	const { label, element, ...groupProps } = props;
+	const { control, name, options, ...elementProps } = element;
 	const [error, setError] = useState();
 
 	return (

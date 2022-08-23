@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Select from 'react-select';
 
 export const FieldSelect = props => {
-	// select props
+	// Field props
 	let {
 		value,
 		options,
@@ -12,24 +12,25 @@ export const FieldSelect = props => {
 		...selectProps
 	} = props;
 
-	// className
+	// Update className
 	className = className
 		? `react-select-container ${className}`
 		: 'react-select-container';
 
-	// selected
+	// Selected
 	const [selected, setSelected] = useState();
 
+	// Effect update selected
 	useEffect(() => {
 		setSelected(options.find(item => item.value === value));
 	}, [value, options]);
 
-	// handle change
+	// Handle change
 	const handleChange = selectedValue => {
 		if (onChange) onChange(selectedValue.value);
 	};
 
-	// return
+	// Return JSX
 	return (
 		<Select
 			value={selected}

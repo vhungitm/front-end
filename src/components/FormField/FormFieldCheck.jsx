@@ -3,16 +3,17 @@ import { FormCheck } from 'react-bootstrap';
 import { useController } from 'react-hook-form';
 
 export const FormFieldCheck = props => {
+	// Field props
 	const { control, name, type, value, options, setError, ...checkProps } =
 		props;
 
-	// use controller
+	// Use controller
 	const {
 		field: { value: groupValue, onChange, ...fieldProps },
 		fieldState: { error, invalid }
 	} = useController({ control, name });
 
-	// update value
+	// Effect update value
 	useEffect(() => {
 		onChange(
 			type === 'radio'
@@ -23,12 +24,12 @@ export const FormFieldCheck = props => {
 		);
 	}, [groupValue, type, options.length, onChange]);
 
-	// update error
+	// Effect update error
 	useEffect(() => {
 		setError({ ...error, type: 'invalid' });
 	}, [error, setError]);
 
-	// handle change
+	// Handle change
 	const handleChange = e => {
 		let { value: eventValue, checked } = e.target;
 
@@ -48,7 +49,7 @@ export const FormFieldCheck = props => {
 			);
 	};
 
-	// return
+	// Return JSX
 	return (
 		<FormCheck
 			type={type}

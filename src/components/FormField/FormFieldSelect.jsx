@@ -3,7 +3,7 @@ import { useController } from 'react-hook-form';
 import Select from 'react-select';
 
 export const FormFieldSelect = props => {
-	// select props
+	// Field props
 	let {
 		control,
 		name,
@@ -15,37 +15,38 @@ export const FormFieldSelect = props => {
 		...selectProps
 	} = props;
 
-	// useController
+	// Use controller
 	const {
 		field: { value, onChange: updateValue, ...fieldProps },
 		fieldState: { error, invalid }
 	} = useController({ control, name });
 
-	// update error
+	// Effect update error
 	useEffect(() => {
 		setError({ ...error, type: 'invalid' });
 	}, [error, setError]);
 
-	// className
+	// Update className
 	className = className
 		? `react-select-container ${className}`
 		: 'react-select-container';
 	className = invalid ? `${className} is-invalid` : className;
 
-	// selected
+	// Selected
 	const [selected, setSelected] = useState();
 
+	// Effect update selected
 	useEffect(() => {
 		setSelected(options.find(item => item.value === value));
 	}, [value, options]);
 
-	// handle change
+	// Handle change
 	const handleChange = selectedValue => {
 		updateValue(selectedValue.value);
 		if (onChange) onChange(selectedValue.value);
 	};
 
-	// return
+	// Return JSX
 	return (
 		<Select
 			value={selected}

@@ -3,18 +3,17 @@ import { FieldFeedback, FieldLabel } from '.';
 import { FieldCheck } from './FieldCheck';
 
 export const FieldCheckGroup = props => {
-	const {
-		label,
-		element: { name, value, options, ...elementProps },
-		error,
-		...groupProps
-	} = props;
+	// Group props
+	const { label, element, error, ...groupProps } = props;
+	const { name, value, options, ...elementProps } = element;
 
+	// Effect update group value
 	const [groupValue, setGroupValue] = useState(options.length >= 2 ? [] : '');
 	useEffect(() => {
 		if (value !== undefined) setGroupValue(value);
 	}, [value]);
 
+	// Return JSX
 	return (
 		<div {...groupProps}>
 			{label && <FieldLabel {...label} />}

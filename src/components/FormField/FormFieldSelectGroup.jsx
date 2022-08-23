@@ -6,7 +6,6 @@ export const FormFieldSelectGroup = props => {
 	const { label, element, ...groupProps } = props;
 	const [error, setError] = useState(null);
 
-	// return
 	return (
 		<div {...groupProps}>
 			{label && <FieldLabel {...label} />}

@@ -3,26 +3,27 @@ import { FormControl } from 'react-bootstrap';
 import { useController } from 'react-hook-form';
 
 export const FormFieldControl = props => {
+	// Field props
 	const { control, name, size, iconStart, iconEnd, setError, ...controlProps } =
 		props;
 
-	// control gorup className
+	// Update control group className
 	const controlGroupClassName = size
 		? `form-control-group form-control-group-${size}`
 		: 'form-control-group';
 
-	// use controller
+	// Use controller
 	const {
 		field,
 		fieldState: { invalid, error }
 	} = useController({ control, name });
 
-	// update error
+	// Effect update error
 	useEffect(() => {
 		setError({ ...error, type: 'invalid' });
 	}, [error, setError]);
 
-	// return
+	// Return JSX
 	return (
 		<div className={controlGroupClassName}>
 			{iconStart && iconStart}

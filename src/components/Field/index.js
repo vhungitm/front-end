@@ -3,6 +3,7 @@ export * from './FieldCheckGroup';
 export * from './FieldControl';
 export * from './FieldControlGroup';
 export * from './FieldFeedback';
+export * from './FieldIcon';
 export * from './FieldLabel';
 export * from './FieldSelect';
 export * from './FieldSelectGroup';

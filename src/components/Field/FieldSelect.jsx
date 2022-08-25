@@ -1,21 +1,31 @@
 import { useEffect, useState } from 'react';
 import Select from 'react-select';
+import { FieldIcon } from '.';
 
 export const FieldSelect = props => {
 	// Field props
 	let {
+		size,
 		value,
-		options,
+		options = [],
 		className,
 		placeholder = '',
+		iconStart,
+		iconEnd,
 		onChange,
 		...selectProps
 	} = props;
+
+	// Update control group className
+	const controlGroupClassName = size
+		? `form-control-group form-control-group-${size} react-select`
+		: 'form-control-group react-select';
 
 	// Update className
 	className = className
 		? `react-select-container ${className}`
 		: 'react-select-container';
+	className = size ? `${className} react-select-container-${size}` : className;
 
 	// Selected
 	const [selected, setSelected] = useState();
@@ -32,14 +42,19 @@ export const FieldSelect = props => {
 
 	// Return JSX
 	return (
-		<Select
-			value={selected}
-			options={options}
-			placeholder={placeholder}
-			className={className}
-			classNamePrefix="react-select"
-			onChange={handleChange}
-			{...selectProps}
-		/>
+		<div className={controlGroupClassName}>
+			{iconStart && <FieldIcon {...iconStart} name="iconStart" />}
+			{iconEnd && <FieldIcon {...iconEnd} name="iconEnd" />}
+			<Select
+				value={selected}
+				options={options}
+				placeholder={placeholder}
+				className={className}
+				classNamePrefix="react-select"
+				noOptionsMessage={() => 'Không có'}
+				onChange={handleChange}
+				{...selectProps}
+			/>
+		</div>
 	);
 };

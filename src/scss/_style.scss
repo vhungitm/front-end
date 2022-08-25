@@ -1,73 +1,108 @@
-:root {
+body {
 	--bs-body-font-size: 15px;
 	--bs-body-font-family: Montserrat, sans-serif;
-	--bs-form-control-padding-x: 0.75rem;
-	--bs-form-control-padding-y: 0.375rem;
-	--bs-form-control-radius: 4px;
-	--bs-form-control-font-size: 15px;
+
+	/* Form control */
+	--bs-form-control-focus-box-shadow: 0 0 0 4px rgb(13 110 253 / 25%);
+	--bs-form-control-focus-box-shadow-danger: 0 0 0 4px rgb(220 53 69 / 25%);
 	--bs-form-control-focus-border: 1px solid #86b7fe;
-	--bs-form-control-focus-box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
-	--bs-form-control-focus-box-shadow-danger: 0 0 0 0.25rem rgb(220 53 69 / 25%);
-	--bs-icon-size: var(--bs-form-control-font-size);
+	--bs-form-control-radius: 4px;
+
+	--bs-form-control-padding: 6px 12px;
+	--bs-form-control-padding-x: 12px;
+	--bs-form-control-padding-y: 6px;
+	--bs-form-control-font-size: 15px;
+
+	--bs-form-control-icon-size: 15px;
+	--bs-form-control-icon-padding: 30px;
+
+	--bs-form-control-sm-padding: 4px 8px;
+	--bs-form-control-sm-padding-x: 8px;
+	--bs-form-control-sm-padding-y: 4px;
+	--bs-form-control-sm-font-size: 13px;
+
+	--bs-form-control-sm-icon-size: 13px;
+	--bs-form-control-sm-icon-padding: 30px;
+
+	--bs-form-control-lg-padding: 8px 16px;
+	--bs-form-control-lg-padding-x: 16px;
+	--bs-form-control-lg-padding-y: 8px;
+	--bs-form-control-lg-font-size: 19px;
+
+	--bs-form-control-lg-icon-size: 19px;
+	--bs-form-control-lg-icon-padding: 36px;
+
+	--bs-react-select-padding: 20px;
+	--bs-react-select-icon-padding: 50px;
+
+	--bs-react-select-sm-padding: 50px;
+	--bs-react-select-sm-icon-padding: 50px;
+
+	--bs-react-select-lg-padding: 22px;
+	--bs-react-select-lg-icon-padding: 58px;
 
 	.form-control {
-		padding: var(--bs-form-control-padding-y) var(--bs-form-control-padding-x);
 		border-radius: var(--bs-form-control-radius);
+		padding: var(--bs-form-control-padding);
 		font-size: var(--bs-form-control-font-size);
+		&.form-control-sm {
+			padding: var(--bs-form-control-sm-padding);
+		}
+		&.form-control-lg {
+			padding: var(--bs-form-control-lg-padding);
+		}
+		&.is-invalid {
+			background-image: none;
+			padding-right: var(--bs-form-control-padding-x);
+		}
 	}
+
 	.form-control-group {
 		position: relative;
 		display: flex;
 		align-items: center;
-		--bs-form-control-icon-padding: calc(
-			var(--bs-form-control-padding-x) + var(--bs-icon-size) + 4px
-		);
 		&.form-control-group-sm {
-			--bs-icon-size: 13px;
-			--bs-form-control-font-size: 13px;
+			--bs-form-control-icon-padding: var(--bs-form-control-sm-icon-padding);
+			--bs-form-control-icon-size: var(--bs-form-control-sm-icon-size);
+			--bs-react-select-padding: var(--bs-react-select-sm-padding);
+			--bs-react-select-icon-padding: var(--bs-react-select-sm-icon-padding);
 		}
 		&.form-control-group-lg {
-			--bs-icon-size: 19px;
-			--bs-form-control-font-size: 19px;
+			--bs-form-control-icon-padding: var(--bs-form-control-lg-icon-padding);
+			--bs-form-control-icon-size: var(--bs-form-control-lg-icon-size);
+			--bs-react-select-padding: var(--bs-react-select-lg-padding);
+			--bs-react-select-icon-padding: var(--bs-react-select-lg-icon-padding);
 		}
 		.icon-start {
 			position: absolute;
-			width: var(--bs-icon-size);
-			height: var(--bs-icon-size);
+			z-index: 1;
 			left: var(--bs-form-control-padding-x);
-			font-size: var(--bs-form-control-font-size);
+			width: var(--bs-form-control-icon-size);
+			height: var(--bs-form-control-icon-size);
+			font-size: var(--bs-form-control-icon-size);
 			& ~ .form-control {
 				padding-left: var(--bs-form-control-icon-padding);
 			}
 		}
 		.icon-end {
 			position: absolute;
-			width: var(--bs-icon-size);
-			height: var(--bs-icon-size);
+			z-index: 1;
 			right: var(--bs-form-control-padding-x);
-			font-size: var(--bs-form-control-font-size);
+			width: var(--bs-form-control-icon-size);
+			height: var(--bs-form-control-icon-size);
+			font-size: var(--bs-form-control-icon-size);
 			& ~ .form-control {
 				padding-right: var(--bs-form-control-icon-padding);
 			}
 		}
-		.form-control {
-			&.form-control-sm {
-				--bs-form-control-padding-x: 0.5rem;
-				--bs-form-control-padding-y: 0.25rem;
-				--bs-form-control-font-size: 13px;
-			}
-			&.form-control-lg {
-				--bs-form-control-padding-x: 1rem;
-				--bs-form-control-padding-y: 0.5rem;
-				--bs-form-control-font-size: 19px;
-			}
-			&.is-invalid {
-				background-image: none;
-				padding-right: var(--bs-form-control-padding-x);
-			}
-		}
 	}
+
+	/* React select */
 	.react-select-container {
+		width: 100%;
+		span {
+			z-index: 0;
+		}
 		&.is-invalid {
 			.react-select__control {
 				border: 1px solid var(--bs-red);
@@ -77,18 +112,35 @@
 			}
 		}
 		.react-select__control {
+			min-height: 20px;
 			border: 1px solid var(--bs-gray-400);
+			background: transparent;
 			&--is-focused {
+				box-shadow: var(--bs-form-control-focus-box-shadow);
 				border: var(--bs-form-control-focus-border);
 				outline: 0;
-				box-shadow: var(--bs-form-control-focus-box-shadow);
 			}
 			&--menu-is-open {
 				border-radius: 4px 4px 0 0;
 			}
 			.react-select__value-container {
+				padding: var(--bs-form-control-padding);
+				padding-right: var(--bs-form-control-icon-padding);
+				.react-select__single-value {
+					margin: 0;
+				}
+				.react-select__input-container {
+					overflow: hidden;
+					margin: 0;
+					width: 100%;
+					padding: 0;
+					font-size: var(--bs-form-control-font-size);
+				}
 			}
 			.react-select__indicators {
+				position: absolute;
+				right: 0;
+				height: 100%;
 				.react-select__indicator-separator {
 					display: none;
 				}
@@ -125,10 +177,32 @@
 			}
 		}
 	}
+
+	/* React select group */
+	.form-control-group.react-select {
+		.icon-start {
+			& ~ .react-select-container {
+				.react-select__value-container {
+					padding-left: var(--bs-form-control-icon-padding);
+				}
+			}
+		}
+		.icon-end {
+			margin-right: var(--bs-react-select-padding);
+			& ~ .react-select-container {
+				.react-select__value-container {
+					padding-right: var(--bs-react-select-icon-padding);
+				}
+			}
+		}
+	}
+
+	/* Feedback */
 	.invalid-feedback {
 		display: block;
 	}
 
+	/* Buttons */
 	.btn {
 		--bs-btn-border-radius: 4px !important;
 		&.block {

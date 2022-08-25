@@ -12,7 +12,7 @@ export const FieldCheck = props => {
 		...checkProps
 	} = props;
 
-	// Update group value
+	// Effect update group value by type
 	useEffect(() => {
 		setGroupValue(
 			type === 'radio'
@@ -21,7 +21,7 @@ export const FieldCheck = props => {
 				? groupValue
 				: Boolean(groupValue)
 		);
-	}, [groupValue, type, options, setGroupValue]);
+	}, [type, options, groupValue, setGroupValue]);
 
 	// Handle change
 	const handleChange = e => {

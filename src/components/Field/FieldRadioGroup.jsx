@@ -1,36 +1,37 @@
 import { useEffect, useState } from 'react';
+import { FormCheck } from 'react-bootstrap';
 import { FieldFeedback, FieldLabel } from '.';
-import { FieldCheck } from './FieldCheck';
 
-export const FieldCheckGroup = props => {
-	// Group props
-	const { label, element, error, ...groupProps } = props;
-	const { name, value, options, ...elementProps } = element;
+export const FieldRadioGroup = props => {
+	const {
+		label,
+		element: { name, value, options, ...elementProps },
+		error,
+		...groupProps
+	} = props;
 
-	// Group value
-	const [groupValue, setGroupValue] = useState(options.length >= 2 ? [] : '');
+	// This group value
+	const [groupValue, setGroupValue] = useState();
 
-	// Effect update group value
 	useEffect(() => {
 		if (value !== undefined) setGroupValue(value);
 	}, [value]);
 
-	// Return JSX
 	return (
 		<div {...groupProps}>
 			{label && <FieldLabel {...label} />}
 
 			{options.map((item, id) => (
-				<FieldCheck
+				<FormCheck
 					key={`${name}-${id}`}
 					id={`${name}-${id}`}
 					name={name}
-					type="checkbox"
-					options={options}
+					checked={groupValue === item.value}
 					groupValue={groupValue}
 					setGroupValue={setGroupValue}
 					{...elementProps}
 					{...item}
+					type="radio"
 				/>
 			))}
 

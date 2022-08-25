@@ -1,3 +1,4 @@
+import { FieldIcon } from 'components/Field';
 import { useEffect } from 'react';
 import { FormControl } from 'react-bootstrap';
 import { useController } from 'react-hook-form';
@@ -26,8 +27,8 @@ export const FormFieldControl = props => {
 	// Return JSX
 	return (
 		<div className={controlGroupClassName}>
-			{iconStart && iconStart}
-			{iconEnd && iconEnd}
+			{iconStart && <FieldIcon {...iconStart} name="iconStart" />}
+			{iconEnd && <FieldIcon {...iconEnd} name="iconEnd" />}
 			<FormControl
 				size={size}
 				{...field}

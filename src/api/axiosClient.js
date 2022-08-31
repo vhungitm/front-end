@@ -19,15 +19,12 @@ axiosClient.interceptors.request.use(async config => {
 
 axiosClient.interceptors.response.use(
 	response => {
-		if (response && response.data) {
-			return response.data;
-		}
+		if (response && response.data) return response.data;
 		return response;
 	},
 	error => {
-		if (error && error.response && error.response.data) {
+		if (error && error.response && error.response.data)
 			return error.response.data;
-		}
 		return error;
 	}
 );

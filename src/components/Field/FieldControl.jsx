@@ -1,4 +1,5 @@
 import { FormControl } from 'react-bootstrap';
+import { FieldIcon } from '.';
 
 export const FieldControl = props => {
 	let { size, iconStart, iconEnd, ...controlProps } = props;
@@ -11,8 +12,8 @@ export const FieldControl = props => {
 	// Return JSX
 	return (
 		<div className={controlGroupClassName}>
-			{iconStart && iconStart}
-			{iconEnd && iconEnd}
+			{iconStart && <FieldIcon {...iconStart} name="iconStart" />}
+			{iconEnd && <FieldIcon {...iconEnd} name="iconEnd" />}
 			<FormControl size={size} {...controlProps} />
 		</div>
 	);

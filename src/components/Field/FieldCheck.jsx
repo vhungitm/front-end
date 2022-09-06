@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { FormCheck } from 'react-bootstrap';
 
 export const FieldCheck = props => {
@@ -11,17 +10,6 @@ export const FieldCheck = props => {
 		setGroupValue,
 		...checkProps
 	} = props;
-
-	// Effect update group value by type
-	useEffect(() => {
-		setGroupValue(
-			type === 'radio'
-				? groupValue
-				: options.length >= 2
-				? groupValue
-				: Boolean(groupValue)
-		);
-	}, [type, options, groupValue, setGroupValue]);
 
 	// Handle change
 	const handleChange = e => {

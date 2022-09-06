@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import Select from 'react-select';
 import { FieldIcon } from '.';
 
@@ -27,17 +26,15 @@ export const FieldSelect = props => {
 		: 'react-select-container';
 	className = size ? `${className} react-select-container-${size}` : className;
 
-	// Selected
-	const [selected, setSelected] = useState();
-
-	// Effect update selected
-	useEffect(() => {
-		setSelected(options.find(item => item.value === value));
-	}, [value, options]);
-
 	// Handle change
 	const handleChange = selectedValue => {
-		if (onChange) onChange(selectedValue.value);
+		if (onChange)
+			onChange({
+				target: {
+					name: selectProps.name,
+					value: selectedValue.value
+				}
+			});
 	};
 
 	// Return JSX
@@ -46,7 +43,7 @@ export const FieldSelect = props => {
 			{iconStart && <FieldIcon {...iconStart} name="iconStart" />}
 			{iconEnd && <FieldIcon {...iconEnd} name="iconEnd" />}
 			<Select
-				value={selected}
+				value={options.find(item => item.value === value)}
 				options={options}
 				placeholder={placeholder}
 				className={className}

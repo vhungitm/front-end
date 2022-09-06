@@ -1,16 +1,31 @@
-import { FieldFeedback, FieldLabel } from 'components/Field';
-import { useState } from 'react';
-import { FormFieldSelect } from '.';
+import { FieldSelectGroup } from 'components/Field';
+import { useController } from 'react-hook-form';
 
 export const FormFieldSelectGroup = props => {
 	const { label, element, ...groupProps } = props;
-	const [error, setError] = useState(null);
+	const { control, name, ...elementProps } = element;
 
+	// Controller
+	let {
+		field: { ref, onChange, ...fieldProps },
+		fieldState: { error }
+	} = useController({ control, name });
+
+	// Error
+	error = error && { type: 'invalid', message: error.message };
+
+	// Handle change
+	const handleChange = e => {
+		onChange(e.target.value);
+	};
+
+	// Return JSX
 	return (
-		<div {...groupProps}>
-			{label && <FieldLabel {...label} />}
-			<FormFieldSelect {...element} setError={setError} />
-			{error && <FieldFeedback {...error} />}
-		</div>
+		<FieldSelectGroup
+			label={label}
+			element={{ ...fieldProps, onChange: handleChange, ...elementProps }}
+			error={error}
+			{...groupProps}
+		/>
 	);
 };

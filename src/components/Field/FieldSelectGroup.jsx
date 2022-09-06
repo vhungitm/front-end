@@ -13,11 +13,16 @@ export const FieldSelectGroup = props => {
 		if (value !== undefined) setGroupValue(value);
 	}, [value]);
 
+	// Effect update selected
+	useEffect(() => {
+		setGroupValue(value);
+	}, [value]);
+
 	// Return JSX
 	return (
 		<div {...groupProps}>
 			{label && <FieldLabel {...label} />}
-			<FieldSelect {...element} value={groupValue} setValue={setGroupValue} />
+			<FieldSelect {...element} value={groupValue} />
 			{error && <FieldFeedback {...error} />}
 		</div>
 	);

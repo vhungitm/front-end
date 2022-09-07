@@ -38,7 +38,7 @@ export const FormFieldCheckGroup = props => {
 	// Retur JSX
 	return (
 		<FieldCheckGroup
-			label={{ element: 'Học' }}
+			label={label}
 			element={{ ...fieldProps, onChange: handleChange, ...elementProps }}
 			{...groupProps}
 			error={error}

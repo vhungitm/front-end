@@ -2,28 +2,17 @@ import { useEffect, useState } from 'react';
 import { FieldFeedback, FieldLabel, FieldSelect } from '.';
 
 export const FieldSelectGroup = props => {
-	const { label, element, error, ...groupProps } = props;
-	const { value } = element;
+  const { label, element, error, ...groupProps } = props;
+  const { value } = element;
+  const [groupValue, setGroupValue] = useState('');
 
-	// Group value
-	const [groupValue, setGroupValue] = useState('');
+  useEffect(() => value !== undefined && setGroupValue(value), [value]);
 
-	// Effect update group value
-	useEffect(() => {
-		if (value !== undefined) setGroupValue(value);
-	}, [value]);
-
-	// Effect update selected
-	useEffect(() => {
-		setGroupValue(value);
-	}, [value]);
-
-	// Return JSX
-	return (
-		<div {...groupProps}>
-			{label && <FieldLabel {...label} />}
-			<FieldSelect {...element} value={groupValue} />
-			{error && <FieldFeedback {...error} />}
-		</div>
-	);
+  return (
+    <div {...groupProps}>
+      {label && <FieldLabel {...label} />}
+      <FieldSelect {...element} value={groupValue} />
+      {error && <FieldFeedback {...error} />}
+    </div>
+  );
 };

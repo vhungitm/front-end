@@ -3,42 +3,31 @@ import { FieldFeedback, FieldLabel } from '.';
 import { FieldCheck } from './FieldCheck';
 
 export const FieldCheckGroup = props => {
-	// Group props
-	const { label, element, error, ...groupProps } = props;
-	const { name, value, type, options, ...elementProps } = element;
+  const { label, element, error, ...groupProps } = props;
+  const { name, value, type, options, ...elementProps } = element;
+  const [groupValue, setGroupValue] = useState(value || options.length >= 2 ? [] : false);
 
-	// Group value
-	const [groupValue, setGroupValue] = useState(
-		value || options.length >= 2 ? [] : false
-	);
+  useEffect(() => value !== undefined && setGroupValue(value), [value]);
 
-	// Effect update group value
-	useEffect(() => {
-		if (value !== undefined) {
-			setGroupValue(value);
-		}
-	}, [value]);
+  return (
+    <div {...groupProps}>
+      {label && <FieldLabel {...label} />}
 
-	// Return JSX
-	return (
-		<div {...groupProps}>
-			{label && <FieldLabel {...label} />}
+      {options.map((item, id) => (
+        <FieldCheck
+          key={`${name}-${id}`}
+          id={`${name}-${id}`}
+          name={name}
+          type={type}
+          options={options}
+          groupValue={groupValue}
+          setGroupValue={setGroupValue}
+          {...elementProps}
+          {...item}
+        />
+      ))}
 
-			{options.map((item, id) => (
-				<FieldCheck
-					key={`${name}-${id}`}
-					id={`${name}-${id}`}
-					name={name}
-					type={type}
-					options={options}
-					groupValue={groupValue}
-					setGroupValue={setGroupValue}
-					{...elementProps}
-					{...item}
-				/>
-			))}
-
-			{error && <FieldFeedback {...error} />}
-		</div>
-	);
+      {error && <FieldFeedback {...error} />}
+    </div>
+  );
 };

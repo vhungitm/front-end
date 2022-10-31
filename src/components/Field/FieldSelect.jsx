@@ -3,31 +3,15 @@ import { FieldIcon } from '.';
 import './FieldSelect.scss';
 
 export const FieldSelect = props => {
-  // Field props
-  let {
-    size,
-    value,
-    options = [],
-    className,
-    placeholder = '',
-    iconStart,
-    iconEnd,
-    onChange,
-    ...selectProps
-  } = props;
+  let { size, value, options = [], className, placeholder = '', iconStart, iconEnd, onChange, ...selectProps } = props;
 
-  // Update control group className
   const controlGroupClassName = size
     ? `form-control-group form-control-group-${size} react-select`
     : 'form-control-group react-select';
 
-  // Update className
-  className = className
-    ? `react-select-container ${className}`
-    : 'react-select-container';
+  className = className ? `react-select-container ${className}` : 'react-select-container';
   className = size ? `${className} react-select-container-${size}` : className;
 
-  // Handle change
   const handleChange = selectedValue => {
     if (onChange)
       onChange({
@@ -38,7 +22,6 @@ export const FieldSelect = props => {
       });
   };
 
-  // Return JSX
   return (
     <div className={controlGroupClassName}>
       {iconStart && <FieldIcon {...iconStart} name="iconStart" />}

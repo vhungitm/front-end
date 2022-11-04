@@ -1,12 +1,24 @@
-import { FormCheck } from 'react-bootstrap';
+import { EventType } from '@testing-library/react';
+import { FormCheck, FormCheckProps } from 'react-bootstrap';
+import { array } from 'yup';
 
-export const FieldCheck = props => {
+interface FieldCheckProps extends FormCheckProps {
+  name: string;
+  type: 'radio' | 'checkbox' | 'switch';
+  value: string;
+  options: [];
+  groupValue: [];
+  setGroupValue: () => {};
+  [key: string]: any;
+}
+
+export const FieldCheck = (props: FieldCheckProps) => {
   const { name, type, value, options, groupValue, setGroupValue, ...checkProps } = props;
 
-  const handleChange = e => {
+  const handleChange = (e: any) => {
     if (!setGroupValue) return;
 
-    let { value: eventValue, checked } = e.target;
+    let { value: (eventValue:any), (checked:boolean) } = e.target;
 
     setGroupValue(
       checked

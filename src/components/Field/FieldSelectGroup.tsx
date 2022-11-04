@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { FormGroupProps } from 'react-bootstrap';
 import {
 	FieldFeedback,
 	FieldFeedbackProps,
@@ -8,7 +9,7 @@ import {
 	FieldSelectProps
 } from '.';
 
-export interface FieldSelectGroupProps {
+export interface FieldSelectGroupProps extends FormGroupProps {
 	label?: FieldLabelProps;
 	element: FieldSelectProps;
 	error?: FieldFeedbackProps;

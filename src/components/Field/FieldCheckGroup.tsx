@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react';
+import { FormGroupProps } from 'react-bootstrap';
 import {
+	FieldCheck,
+	FieldCheckProps,
 	FieldFeedback,
 	FieldFeedbackProps,
 	FieldLabel,
-	FieldLabelProps,
-	FieldCheck,
-	FieldCheckProps
+	FieldLabelProps
 } from '.';
 
-export interface FieldCheckGroupProps {
+export interface FieldCheckGroupProps extends FormGroupProps {
 	label?: FieldLabelProps;
 	element: FieldCheckProps;
 	error?: FieldFeedbackProps;

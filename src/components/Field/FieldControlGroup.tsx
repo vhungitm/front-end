@@ -1,3 +1,4 @@
+import { FormGroupProps } from 'react-bootstrap';
 import {
 	FieldControl,
 	FieldControlProps,
@@ -7,7 +8,7 @@ import {
 	FieldLabelProps
 } from '.';
 
-export interface FieldControlGroupProps {
+export interface FieldControlGroupProps extends FormGroupProps {
 	label?: FieldLabelProps;
 	element: FieldControlProps;
 	error?: FieldFeedbackProps;

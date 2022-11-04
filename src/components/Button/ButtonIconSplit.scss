@@ -1,17 +1,26 @@
 .btn.btn-icon-split {
 	display: flex;
-	justify-content: flex-start;
-
-	overflow: hidden;
+	height: 40px;
 	padding: 0;
+	overflow: hidden;
 
 	.icon {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		width: 40px;
+		height: 100%;
+
 		background: rgba(0, 0, 0, 0.15);
-		color: rgba(255, 255, 255, 0.5);
 	}
 
 	.content {
-		font-size: var(--bs-btn-font-size);
+		display: flex;
+		align-items: center;
+
+		height: 100%;
+		padding: 0 10px;
 		font-weight: 600;
 	}
 }

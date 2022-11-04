@@ -1,10 +1,7 @@
 .btn.btn-circle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
 
-  border-radius: 100%;
-  padding: var(--bs-btn-padding-x);
-
-  font-size: var(--bs-btn-font-size);
+	border-radius: 100%;
 }

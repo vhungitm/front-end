@@ -1,0 +1,24 @@
+.App {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 100vh;
+
+  padding: 40px;
+
+  .App-login {
+    width: 500px;
+
+    border: 1px solid #efefef;
+    border-radius: 6px;
+    padding: 60px 40px;
+
+    .password {
+      .icon-start {
+        cursor: pointer;
+      }
+    }
+  }
+}

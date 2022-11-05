@@ -1,18 +1,23 @@
 import { FormLabel } from 'react-bootstrap';
-import { FormLabelOwnProps } from 'react-bootstrap/esm/FormLabel';
+import { FormLabelOwnProps, FormLabelWithColProps } from 'react-bootstrap/esm/FormLabel';
 
-export interface FieldLabelProps extends FormLabelOwnProps {
-	element: any;
-	required?: boolean;
+export interface FieldLabelBaseProps {
+  element: any;
+  required?: boolean;
 }
 
-export const FieldLabel = (props: FieldLabelProps) => {
-	const { element, required, ...labelProps } = props;
+export interface FieldLabelOwnProps extends FormLabelOwnProps, FieldLabelBaseProps {}
+export interface FieldLabelWithColProps extends FormLabelWithColProps, FieldLabelBaseProps {}
 
-	return (
-		<FormLabel as="div" {...labelProps}>
-			{element}
-			{required && <span className="text-danger"> * </span>}
-		</FormLabel>
-	);
+export type FieldLabelProps = FieldLabelOwnProps | FieldLabelWithColProps;
+
+export const FieldLabel = (props: FieldLabelProps) => {
+  const { element, required, ...labelProps } = props;
+
+  return (
+    <FormLabel as="div" {...labelProps}>
+      {element}
+      {required && <span className="text-danger"> * </span>}
+    </FormLabel>
+  );
 };

@@ -11,8 +11,8 @@ export interface FieldControlProps extends FormControlProps {
 export const FieldControl = (props: FieldControlProps) => {
   let { size, iconStart, iconEnd, ...controlProps } = props;
 
-  let controlGroupClassName = 'form-control-group';
-  if (size) controlGroupClassName += ` form-control-group-${size}`;
+  let controlGroupClassName = 'field-control';
+  if (size) controlGroupClassName += ` field-control-${size}`;
   if (iconStart) controlGroupClassName += ' icon-start';
   if (iconEnd) controlGroupClassName += ' icon-end';
 

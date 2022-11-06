@@ -16,7 +16,7 @@ const App = () => {
   const defaultValues: FieldValues = {
     username: '',
     password: '',
-    isRemember: true
+    isRemember: false
   };
 
   const loginValidation = yup.object().shape({
@@ -45,30 +45,32 @@ const App = () => {
 
         <div className="login-body">
           <FormFieldControlGroup
-            label={{ element: 'Username:', required: true }}
+            label={{ element: 'Tài khoản:', required: true }}
             element={{
               control,
               name: 'username',
               iconStart: {
-                type: 'css',
-                className: 'fas fa-user'
+                type: 'img',
+                src: 'https://cdn-icons-png.flaticon.com/512/1077/1077063.png'
               }
             }}
             className="mb-3"
           />
           <FormFieldControlGroup
-            label={{ element: 'Password:', required: true }}
+            label={{ element: 'Mật khẩu:', required: true }}
             element={{
               control,
               name: 'password',
               type: showPassword ? 'text' : 'password',
               iconStart: {
-                type: 'css',
-                className: 'fas fa-lock'
+                type: 'img',
+                src: 'https://cdn-icons-png.flaticon.com/512/1828/1828415.png'
               },
               iconEnd: {
-                type: 'css',
-                className: showPassword ? 'fas fa-eye-slash' : 'fas fa-eye',
+                type: 'img',
+                src: showPassword
+                  ? 'https://cdn-icons-png.flaticon.com/512/2767/2767146.png'
+                  : 'https://cdn-icons-png.flaticon.com/512/2874/2874780.png',
                 onClick: () => {
                   setShowPassword(!showPassword);
                 }
@@ -84,7 +86,12 @@ const App = () => {
               options: [
                 { value: 'Admin', label: 'Admin' },
                 { value: 'Basic', label: 'Basic' }
-              ]
+              ],
+              iconStart: {
+                type: 'img',
+                src: 'https://cdn-icons-png.flaticon.com/512/3551/3551830.png'
+              },
+              isSearchable: false
             }}
             className="mb-3"
           />
@@ -92,12 +99,19 @@ const App = () => {
             element={{
               control,
               name: 'isRemember',
-              options: [{ value: true, label: 'Remmeber Account' }]
+              options: [{ value: 'true', label: 'Nhớ tài khoản' }]
             }}
             className="mb-3"
           />
           <ButtonIconSplit
-            icon={<i className="fas fa-sign-in" />}
+            iconStart={{
+              type: 'img',
+              src: 'https://cdn-icons-png.flaticon.com/128/2996/2996170.png'
+            }}
+            iconEnd={{
+              type: 'img',
+              src: 'https://cdn-icons-png.flaticon.com/128/5097/5097464.png'
+            }}
             element="Login"
             type="submit"
             className="btn-block"

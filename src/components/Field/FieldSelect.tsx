@@ -32,9 +32,10 @@ export const FieldSelect = (props: FieldSelectProps) => {
     ...selectProps
   } = props;
 
-  const controlGroupClassName = size
-    ? `form-control-group form-control-group-${size} react-select`
-    : 'form-control-group react-select';
+  let controlGroupClassName = 'field-select';
+  if (size) controlGroupClassName += ` field-select-${size}`;
+  if (iconStart) controlGroupClassName += ' icon-start';
+  if (iconEnd) controlGroupClassName += ' icon-end';
 
   className = className ? `react-select-container ${className}` : 'react-select-container';
   className = size ? `${className} react-select-container-${size}` : className;

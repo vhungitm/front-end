@@ -9,6 +9,7 @@ export interface FieldSelectOptionsProps {
 }
 
 export type FieldSelectProps = Props & {
+  isInvalid?: boolean;
   value?: any;
   size?: 'sm' | 'lg';
   iconStart?: FieldIconStartProps;
@@ -17,8 +18,19 @@ export type FieldSelectProps = Props & {
   onChange?: any;
 };
 
-export const FieldSelect: React.FC<FieldSelectProps> = props => {
-  let { size, value, options = [], className, placeholder = '', iconStart, iconEnd, onChange, ...selectProps } = props;
+export const FieldSelect = (props: FieldSelectProps) => {
+  let {
+    isInvalid,
+    size,
+    value,
+    options = [],
+    className,
+    placeholder = '',
+    iconStart,
+    iconEnd,
+    onChange,
+    ...selectProps
+  } = props;
 
   const controlGroupClassName = size
     ? `form-control-group form-control-group-${size} react-select`
@@ -26,6 +38,8 @@ export const FieldSelect: React.FC<FieldSelectProps> = props => {
 
   className = className ? `react-select-container ${className}` : 'react-select-container';
   className = size ? `${className} react-select-container-${size}` : className;
+
+  if (isInvalid) className += ' is-invalid';
 
   const handleChange = (selectedValue: any) => {
     if (onChange)
@@ -40,7 +54,6 @@ export const FieldSelect: React.FC<FieldSelectProps> = props => {
   return (
     <div className={controlGroupClassName}>
       {iconStart && <FieldIcon {...iconStart} name="iconStart" />}
-      {iconEnd && <FieldIcon {...iconEnd} name="iconEnd" />}
       <Select
         value={options.find((item: any) => item.value === value)}
         options={options}
@@ -51,6 +64,7 @@ export const FieldSelect: React.FC<FieldSelectProps> = props => {
         onChange={handleChange}
         {...selectProps}
       />
+      {iconEnd && <FieldIcon {...iconEnd} name="iconEnd" />}
     </div>
   );
 };

@@ -1,26 +1,28 @@
-import { FieldIcon, FieldIconEndProps, FieldIconStartProps } from 'components/Field';
+import {
+	FieldIcon,
+	FieldIconEndProps,
+	FieldIconStartProps
+} from 'components/Field';
 import { Button, ButtonProps } from 'react-bootstrap';
 import './ButtonIconSplit.scss';
 
 export interface ButtonIconSplitProps extends ButtonProps {
-  iconStart: FieldIconStartProps;
-  iconEnd: FieldIconEndProps;
-  element: any;
+	iconStart: FieldIconStartProps;
+	iconEnd?: FieldIconEndProps;
+	element: any;
 }
 
 export const ButtonIconSplit = (props: ButtonIconSplitProps) => {
-  let { iconStart, iconEnd, element, className, ...buttonProps } = props;
-  className = className ? `btn-icon-split ${className}` : 'btn-icon-split';
+	let { iconStart, iconEnd, element, className, ...buttonProps } = props;
+	className = className ? `btn-icon-split ${className}` : 'btn-icon-split';
 
-  return (
-    <Button {...buttonProps} className={className}>
-      <div className="icon">
-        <FieldIcon {...iconStart} name="iconStart" />
-      </div>
-      <div className="content">
-        {element}
-        <FieldIcon {...iconStart} name="iconEnd" />
-      </div>
-    </Button>
-  );
+	return (
+		<Button {...buttonProps} className={className}>
+			<div className="icon">
+				<FieldIcon {...iconStart} name="iconStart" />
+			</div>
+			<div className="content">{element}</div>
+			{iconEnd && <FieldIcon {...iconStart} name="iconEnd" />}
+		</Button>
+	);
 };

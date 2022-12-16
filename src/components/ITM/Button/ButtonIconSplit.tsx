@@ -1,10 +1,5 @@
-import {
-	FieldIcon,
-	FieldIconEndProps,
-	FieldIconStartProps
-} from 'components/Field';
+import { FieldIcon, FieldIconEndProps, FieldIconStartProps } from '../Field';
 import { Button, ButtonProps } from 'react-bootstrap';
-import './ButtonIconSplit.scss';
 
 export interface ButtonIconSplitProps extends ButtonProps {
 	iconStart: FieldIconStartProps;

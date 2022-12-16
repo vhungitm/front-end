@@ -1,5 +1,4 @@
 import { Button, ButtonProps, OverlayTrigger, Tooltip } from 'react-bootstrap';
-import './ButtonCircle.scss';
 
 export interface ButtonCircleProps extends ButtonProps {
 	icon: any;

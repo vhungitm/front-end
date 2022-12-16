@@ -1,16 +1,13 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { selectAuth } from 'app/authSlice';
 import { useAppSelector } from 'app/store';
-import { ButtonIconSplit } from 'components/Button';
-import {
-	FormFieldCheckGroup,
-	FormFieldControlGroup,
-	FormFieldSelectGroup
-} from 'components/FormField';
+import { ButtonIconSplit } from 'components/ITM/Button';
+import { FormFieldCheckGroup, FormFieldControlGroup, FormFieldSelectGroup } from 'components/ITM/FormField';
 import { useState } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
+import 'components/ITM/scss/itm.scss';
 import './App.scss';
 
 const App = () => {
@@ -44,11 +41,7 @@ const App = () => {
 		<div className="App">
 			<form className="App-login" onSubmit={handleSubmit(onSubmit)}>
 				<div className="login-header">
-					<img
-						src="/images/icons/no-avatar.png"
-						alt="Login-icon"
-						className="login-icon"
-					/>
+					<img src="/images/icons/no-avatar.png" alt="Login-icon" className="login-icon" />
 				</div>
 
 				<div className="login-body">
